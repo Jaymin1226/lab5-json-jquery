@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Details</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <h1>Book Information</h1>
+  <div>
+    <p id="titleFirstBook"></p>
+    <p id="authorSecondBook"></p>
+    <p id="allGenres"></p>
+  </div>
+  <script>
+    $(document).ready(function() {
+      // Simulate loading JSON (in real use, you might use $.getJSON or fetch from a file)
+      var books = [
+        {
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "publicationYear": 1925,
+          "genres": ["Fiction", "Classics"]
+        },
+        {
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "publicationYear": 1960,
+          "genres": ["Fiction", "Coming-of-Age"]
+        }
+      ];
+
+      // (a) The title of the first book
+      $('#titleFirstBook').text("Title of the first book: " + books[0].title);
+
+      // (b) The author of the second book
+      $('#authorSecondBook').text("Author of the second book: " + books[1].author);
+
+      // (c) The genres of all books
+      var allGenres = [];
+      books.forEach(function(book) {
+        allGenres = allGenres.concat(book.genres);
+      });
+      // Remove duplicates
+      allGenres = [...new Set(allGenres)];
+      $('#allGenres').text("Genres of all books: " + allGenres.join(", "));
+    });
+  </script>
+</body>
+</html>
